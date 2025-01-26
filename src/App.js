@@ -8,7 +8,7 @@ import Footer from "./components/Footer";
 import Resume from "./components/Resume/ResumeNew";
 import Contact from "./components/Contact/Contact"; // Import the Contact page
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,  // Changed from BrowserRouter to HashRouter
   Route,
   Routes
 } from "react-router-dom";
@@ -29,7 +29,7 @@ function App() {
   }, []);
 
   return (
-    <Router basename="/Portfolio">
+    <Router basename="/Portfolio"> {/* Keep basename as "/Portfolio" */}
       <Preloader load={load} />
       <div className="App" id={load ? "no-scroll" : "scroll"}>
         <Navbar />
@@ -39,7 +39,7 @@ function App() {
           <Route path="/project" element={<Projects />} />
           <Route path="/about" element={<About />} />
           <Route path="/resume" element={<Resume />} />
-          <Route path="/contact" element={<Contact />} /> 
+          <Route path="/contact" element={<Contact />} />
         </Routes>
         <Footer />
       </div>
@@ -48,3 +48,4 @@ function App() {
 }
 
 export default App;
+
