@@ -8,7 +8,7 @@ import Footer from "./components/Footer";
 import Resume from "./components/Resume/ResumeNew";
 import Contact from "./components/Contact/Contact"; // Import the Contact page
 import {
-  HashRouter as Router,  // Changed from BrowserRouter to HashRouter
+  HashRouter as Router,  // Using HashRouter for GitHub Pages
   Route,
   Routes
 } from "react-router-dom";
@@ -18,18 +18,18 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-  const [load, upadateLoad] = useState(true);
+  const [load, updateLoad] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      upadateLoad(false);
+      updateLoad(false);
     }, 1200);
 
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <Router basename="/Portfolio"> {/* Keep basename as "/Portfolio" */}
+    <Router> {/* No basename needed for HashRouter */}
       <Preloader load={load} />
       <div className="App" id={load ? "no-scroll" : "scroll"}>
         <Navbar />
@@ -48,4 +48,3 @@ function App() {
 }
 
 export default App;
-
